@@ -5,6 +5,7 @@ import {
   PROFILE_ROUTE,
   HOME_ROUTE
 } from "../constants/routes";
+import { NavBar } from "../styles";
 
 const routes = [
   {
@@ -24,7 +25,7 @@ const routes = [
 const Navigation = () => {
   return (
     <nav>
-      <ul>
+      <NavBar>
         {routes.map(({ to, label }) => {
           return (
             <li key={to}>
@@ -32,7 +33,7 @@ const Navigation = () => {
             </li>
           );
         })}
-      </ul>
+      </NavBar>
     </nav>
   );
 };

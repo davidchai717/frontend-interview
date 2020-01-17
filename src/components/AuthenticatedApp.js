@@ -7,7 +7,7 @@ import Repositories from "./Repositories";
 
 const AuthenticatedApplication = () => {
   return (
-    <div>
+    <>
       <Navigation />
 
       <Switch>
@@ -27,7 +27,7 @@ const AuthenticatedApplication = () => {
           <div>This path doesn't exist</div>
         </Route>
       </Switch>
-    </div>
+    </>
   );
 };
 

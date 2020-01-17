@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { Button } from "../styles";
 
 const AdditionalRepoInfo = ({ id, issues_url, pulls_url, license }) => {
   console.log(issues_url, pulls_url)
@@ -12,6 +14,11 @@ const AdditionalRepoInfo = ({ id, issues_url, pulls_url, license }) => {
             {license.name} | {license.spdx_id} | <a href={license.url}>License URL</a>
           </p>
           : null}
+      <Link to="/repositories">
+        <Button>
+          Back
+        </Button>
+      </Link>      
     </>
   );
 };

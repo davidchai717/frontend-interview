@@ -2,6 +2,7 @@ import * as React from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import { GITHUB_LINK, getRepositoryRoute } from "../constants/routes";
 import RepositorySearchResult from "./RepositorySearchResult";
+import { TextField } from "../styles";
 
 /**
  * Once given an input, fetch the repositories we searched
@@ -34,7 +35,6 @@ const Repositories = () => {
   return (
     <Switch>
       <Route path="/repositories/:id" component={({ match: { params: { id } } }) => {
-        console.log(id);
         return searchResults && searchResults[id] ? 
           <RepositorySearchResult data={searchResults[id]} full={true} />
         : <div>
@@ -42,8 +42,8 @@ const Repositories = () => {
         </div>
       }} />
       <Route path="/repositories/">
-        <div>
-          <input name="search-terms" onChange={(e) => {
+        <main>
+          <TextField name="search-terms" onChange={(e) => {
             if (timeout) {
               clearTimeout(timeout);
             }
@@ -53,13 +53,13 @@ const Repositories = () => {
             }, 500));
           }} />
           {searchResults ? searchResults.map(
-            (entry, i) => <Link to={getRepositoryRoute(i)}>
-              <RepositorySearchResult data={entry} key={`result-${i}`} full={false} />
+            (entry, i) => <Link to={getRepositoryRoute(i)} key={`result-${i}`}>
+              <RepositorySearchResult data={entry} full={false} />
             </Link>
             ) : (
-            <div>Enter somee test to search github repositories</div>
+            <div>Enter some text to search GitHub repositories</div>
           )}
-        </div>
+        </main>
       </Route>
     </Switch>
   );

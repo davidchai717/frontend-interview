@@ -37,6 +37,7 @@ const Profile = () => {
               email: e.target.value
             });
           }}
+          required={true}
         />
         <input
           name="name"
@@ -47,6 +48,7 @@ const Profile = () => {
               name: e.target.value
             });
           }}
+          required={true}
         />
         <button type="submit">Submit</button>
       </form>

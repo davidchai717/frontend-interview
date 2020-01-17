@@ -45,7 +45,7 @@ const Login = () => {
               email: event.target.value
             });
           }}
-          required="true"
+          required={true}
         />
         <input
           name="password"
@@ -57,7 +57,7 @@ const Login = () => {
               password: event.target.value
             });
           }}
-          required="true"
+          required={true}
         />
         <button type="submit">Login</button>
       </form>

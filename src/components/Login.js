@@ -40,8 +40,10 @@ const Login = () => {
           type="email"
           value={user.email}
           onChange={event => {
-            const newUser = { ...user, email: event.target.value }
-            setUser(newUser);
+            setUser({
+              ...user,
+              email: event.target.value
+            });
           }}
           required="true"
         />
@@ -50,8 +52,10 @@ const Login = () => {
           type="password"
           value={user.password}
           onChange={event => {
-            const newUser = { ...user, password: event.target.value }
-            setUser(newUser);
+            setUser({
+              ...user,
+              password: event.target.value
+            });
           }}
           required="true"
         />

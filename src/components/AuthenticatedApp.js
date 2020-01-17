@@ -1,9 +1,9 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import Navigation from "./Navigation";
-import Home from "./Home";
-import Profile from "./Profile";
-import Repositories from "./Repositories";
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Navigation from './Navigation';
+import Home from './Home';
+import Profile from './Profile';
+import Repositories from './Repositories';
 
 const AuthenticatedApplication = () => {
   return (

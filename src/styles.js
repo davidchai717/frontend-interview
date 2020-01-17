@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 export const MainBody = styled.div`
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const Button = styled.button`
   border-style: none;
@@ -21,10 +22,10 @@ export const Button = styled.button`
     border-color: blue;
     outline: none;
   }
-`
+`;
 
 export const NavBar = styled.ul`
-  list-style-type:none;
+  list-style-type: none;
   display: flex;
   justify-content: space-between;
   li > a {
@@ -35,7 +36,7 @@ export const NavBar = styled.ul`
       color: black;
     }
   }
-`
+`;
 
 export const CardContainer = styled.div`
   border-style: solid;
@@ -52,7 +53,7 @@ export const CardContainer = styled.div`
       color: black;
     }
   }
-`
+`;
 
 export const TextField = styled.input`
   border-style: solid;
@@ -67,4 +68,4 @@ export const TextField = styled.input`
     border-color: black;
     outline: none;
   }
-`
+`;

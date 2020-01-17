@@ -1,8 +1,8 @@
-import * as React from "react";
-import { Route, Switch, Link } from "react-router-dom";
-import { GITHUB_LINK, getRepositoryRoute } from "../constants/routes";
-import RepositorySearchResult from "./RepositorySearchResult";
-import { TextField } from "../styles";
+import * as React from 'react';
+import { Route, Switch, Link } from 'react-router-dom';
+import { GITHUB_LINK, getRepositoryRoute } from '../constants/routes';
+import RepositorySearchResult from './RepositorySearchResult';
+import { TextField } from '../styles';
 
 /**
  * Once given an input, fetch the repositories we searched
@@ -24,39 +24,52 @@ const Repositories = () => {
   const fetchResult = (link, searchTerm) => {
     fetch(link + searchTerm)
       .then(res => res.json())
-      .then(({ total_count, items }) => {
-        console.log(items)
+      .then(({ items }) => {
         updateResults(items);
       })
       .catch(err => {
         throw err;
       });
-  }
+  };
   return (
     <Switch>
-      <Route path="/repositories/:id" component={({ match: { params: { id } } }) => {
-        return searchResults && searchResults[id] ? 
-          <RepositorySearchResult data={searchResults[id]} full={true} />
-        : <div>
-          Invalid request
-        </div>
-      }} />
+      <Route
+        path="/repositories/:id"
+        component={({
+          match: {
+            params: { id },
+          },
+        }) => {
+          return searchResults && searchResults[id] ? (
+            <RepositorySearchResult data={searchResults[id]} full={true} />
+          ) : (
+            <div>Invalid request</div>
+          );
+        }}
+      />
       <Route path="/repositories/">
         <main>
-          <TextField name="search-terms" onChange={(e) => {
-            if (timeout) {
-              clearTimeout(timeout);
-            }
-            const searchValue = e.target.value;
-            updateTimeout(setTimeout(() => {
-              fetchResult(GITHUB_LINK, searchValue)
-            }, 500));
-          }} />
-          {searchResults ? searchResults.map(
-            (entry, i) => <Link to={getRepositoryRoute(i)} key={`result-${i}`}>
-              <RepositorySearchResult data={entry} full={false} />
-            </Link>
-            ) : (
+          <TextField
+            name="search-terms"
+            onChange={e => {
+              if (timeout) {
+                clearTimeout(timeout);
+              }
+              const searchValue = e.target.value;
+              updateTimeout(
+                setTimeout(() => {
+                  fetchResult(GITHUB_LINK, searchValue);
+                }, 500)
+              );
+            }}
+          />
+          {searchResults ? (
+            searchResults.map((entry, i) => (
+              <Link to={getRepositoryRoute(i)} key={`result-${i}`}>
+                <RepositorySearchResult data={entry} full={false} />
+              </Link>
+            ))
+          ) : (
             <div>Enter some text to search GitHub repositories</div>
           )}
         </main>

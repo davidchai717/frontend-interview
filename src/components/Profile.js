@@ -1,6 +1,6 @@
-import * as React from "react";
-import { useUserContext, useSetUserContext } from "../contexts/user";
-import { TextField, Button } from "../styles";
+import * as React from 'react';
+import { useUserContext, useSetUserContext } from '../contexts/user';
+import { TextField, Button } from '../styles';
 
 /**
  * This should update the user context with the new values for email and name
@@ -13,7 +13,7 @@ const Profile = () => {
   // form state
   const [formData, updateForm] = React.useState({
     email,
-    name
+    name,
   });
 
   const [status, setStatus] = React.useState(null);
@@ -26,9 +26,9 @@ const Profile = () => {
           e.preventDefault();
           setUserContext({
             ...user,
-            ...formData
-          })
-          setStatus("Profile updated successfully.")
+            ...formData,
+          });
+          setStatus('Profile updated successfully.');
         }}
       >
         <TextField
@@ -38,7 +38,7 @@ const Profile = () => {
           onChange={e => {
             updateForm({
               ...user,
-              email: e.target.value
+              email: e.target.value,
             });
           }}
           required={true}
@@ -49,14 +49,14 @@ const Profile = () => {
           onChange={e => {
             updateForm({
               ...user,
-              name: e.target.value
+              name: e.target.value,
             });
           }}
           required={true}
         />
         <Button type="submit">Submit</Button>
       </form>
-        {status && <p>{status}</p>}
+      {status && <p>{status}</p>}
     </div>
   );
 };

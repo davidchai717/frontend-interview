@@ -1,10 +1,11 @@
-import * as React from "react";
-import { useSetUserContext } from "../contexts/user";
+import * as React from 'react';
+import { useSetUserContext } from '../contexts/user';
+import { TextField, Button } from '../styles';
 
 const Login = () => {
-  const [user] = React.useState({
-    email: "",
-    password: ""
+  const [user, setUser] = React.useState({
+    email: '',
+    password: '',
   });
   const [error, setError] = React.useState(null);
 
@@ -24,32 +25,48 @@ const Login = () => {
           if (
             user.email &&
             user.password &&
-            user.password.trim() === "password"
+            user.password.trim() === 'password'
           ) {
             setUserContext({
-              name: "Test User",
-              ...user
+              name: 'Test User',
+              ...user,
             });
           } else {
-            setError("invalid");
+            setError('invalid');
           }
         }}
       >
-        <input
-          name="email"
-          value={user.email}
-          onChange={event => {
-            user.email = event.target.value;
-          }}
-        />
-        <input
-          name="password"
-          value={user.password}
-          onChange={event => {
-            user.password = event.target.value;
-          }}
-        />
-        <button type="submit">Login</button>
+        <p>
+          <TextField
+            name="email"
+            type="email"
+            placeholder="Email address"
+            value={user.email}
+            onChange={event => {
+              setUser({
+                ...user,
+                email: event.target.value,
+              });
+            }}
+            required={true}
+          />
+        </p>
+        <p>
+          <TextField
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={user.password}
+            onChange={event => {
+              setUser({
+                ...user,
+                password: event.target.value,
+              });
+            }}
+            required={true}
+          />
+        </p>
+        <Button type="submit">Login</Button>
       </form>
     </>
   );

@@ -1,5 +1,5 @@
-import * as React from "react";
-import { useUserContext } from "../contexts/user";
+import * as React from 'react';
+import { useUserContext } from '../contexts/user';
 
 const Home = () => {
   const user = useUserContext();
